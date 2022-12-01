@@ -11,10 +11,15 @@ public class AddCustomer extends JFrame implements ActionListener {
 
     JTextField t1, t2, t3, t4, t5, t6, t7;
     JComboBox c1;
+
+    public AddCustomer(JComboBox c1) {
+        this.c1 = c1;
+    }
+
     JRadioButton r1, r2;
     JButton b1, b2;
 
-    AddCustomer (String username) {
+    AddCustomer(String username) {
 
         this.setBounds(350, 150, 850, 550);
         this.getContentPane().setBackground(Color.WHITE);
@@ -37,7 +42,7 @@ public class AddCustomer extends JFrame implements ActionListener {
         l2.setBounds(30, 90, 150, 25);
         this.add(l2);
 
-        c1 = new JComboBox(new String[] {"Passport", "Voter ID Card", "Aadhaar Card", "Driving License", "PAN Card"});
+        c1 = new JComboBox(new String[] { "Passport", "Voter ID Card", "Aadhaar Card", "Driving License", "PAN Card" });
         c1.setBounds(180, 90, 200, 25);
         this.add(c1);
 
@@ -126,7 +131,7 @@ public class AddCustomer extends JFrame implements ActionListener {
 
         try {
             Conn c = new Conn();
-            ResultSet rs = c.s.executeQuery("SELECT * FROM account WHERE username = '"+username+"'");
+            ResultSet rs = c.s.executeQuery("SELECT * FROM account WHERE username = '" + username + "'");
             while (rs.next()) {
                 t1.setText(rs.getString("username"));
                 t3.setText(rs.getString("name"));
@@ -137,7 +142,7 @@ public class AddCustomer extends JFrame implements ActionListener {
         }
     }
 
-    public void actionPerformed (ActionEvent ae) {
+    public void actionPerformed(ActionEvent ae) {
 
         String username = t1.getText();
         String id = (String) (c1.getSelectedItem());
@@ -156,8 +161,9 @@ public class AddCustomer extends JFrame implements ActionListener {
 
         if (ae.getSource() == b1) {
 
-            String q = "INSERT INTO customer values ('"+username+"', '"+id+"', '"+number+"', '"+name+"', '"+gender+"'," +
-                    "'"+country+"', '"+address+"', '"+phone+"', '"+email+"')";
+            String q = "INSERT INTO customer values ('" + username + "', '" + id + "', '" + number + "', '" + name
+                    + "', '" + gender + "'," +
+                    "'" + country + "', '" + address + "', '" + phone + "', '" + email + "')";
             try {
                 Conn c = new Conn();
                 c.s.executeUpdate(q);

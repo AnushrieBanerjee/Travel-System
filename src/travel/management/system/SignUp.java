@@ -13,7 +13,7 @@ public class SignUp extends JFrame implements ActionListener {
     JPasswordField t3;
     Choice c1;
 
-    SignUp () {
+    SignUp() {
 
         super("Sign Up");
 
@@ -102,7 +102,7 @@ public class SignUp extends JFrame implements ActionListener {
         p1.add(b2);
     }
 
-    public void actionPerformed (ActionEvent ae) {
+    public void actionPerformed(ActionEvent ae) {
 
         if (ae.getSource() == b1) {
             String username = t1.getText();
@@ -111,7 +111,8 @@ public class SignUp extends JFrame implements ActionListener {
             String security = c1.getSelectedItem();
             String answer = t4.getText();
 
-            String query = "INSERT INTO account values ('"+username+"', '"+name+"', '"+password+"', '"+security+"', '"+answer+"')";
+            String query = "INSERT INTO account values ('" + username + "', '" + name + "', '" + password + "', '"
+                    + security + "', '" + answer + "')";
             try {
                 Conn c = new Conn();
                 c.s.executeUpdate(query);

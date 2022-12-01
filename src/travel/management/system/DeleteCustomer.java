@@ -1,19 +1,25 @@
 package travel.management.system;
 
-import javax.imageio.spi.ImageWriterSpi;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class DeleteCustomer extends JFrame implements ActionListener {
 
     JButton b1, b2;
     String username;
 
-    DeleteCustomer (String user) {
+    DeleteCustomer(String user) {
 
         this.username = user;
 
@@ -119,7 +125,7 @@ public class DeleteCustomer extends JFrame implements ActionListener {
 
         try {
             Conn c = new Conn();
-            ResultSet rs = c.s.executeQuery("SELECT * FROM customer WHERE username = '"+username+"'");
+            ResultSet rs = c.s.executeQuery("SELECT * FROM customer WHERE username = '" + username + "'");
             while (rs.next()) {
                 l11.setText(rs.getString("username"));
                 l12.setText(rs.getString("name"));
@@ -158,14 +164,14 @@ public class DeleteCustomer extends JFrame implements ActionListener {
         this.add(l);
     }
 
-    public void actionPerformed (ActionEvent ae) {
+    public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == b1) {
             try {
                 Conn c = new Conn();
-                c.s.executeUpdate("DELETE FROM account WHERE username = '"+username+"'");
-                c.s.executeUpdate("DELETE FROM bookHotel WHERE username = '"+username+"'");
-                c.s.executeUpdate("DELETE FROM bookPackage WHERE username = '"+username+"'");
-                c.s.executeUpdate("DELETE FROM cutomer WHERE username = '"+username+"'");
+                c.s.executeUpdate("DELETE FROM account WHERE username = '" + username + "'");
+                c.s.executeUpdate("DELETE FROM bookHotel WHERE username = '" + username + "'");
+                c.s.executeUpdate("DELETE FROM bookPackage WHERE username = '" + username + "'");
+                c.s.executeUpdate("DELETE FROM cutomer WHERE username = '" + username + "'");
 
                 JOptionPane.showMessageDialog(null, "Customer Details Deleted Successfully");
 
