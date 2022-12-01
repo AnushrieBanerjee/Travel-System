@@ -12,10 +12,6 @@ public class AddCustomer extends JFrame implements ActionListener {
     JTextField t1, t2, t3, t4, t5, t6, t7;
     JComboBox c1;
 
-    public AddCustomer(JComboBox c1) {
-        this.c1 = c1;
-    }
-
     JRadioButton r1, r2;
     JButton b1, b2;
 
